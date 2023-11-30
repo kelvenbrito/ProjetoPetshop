@@ -201,6 +201,24 @@
     background-color: #FFFFFF;
 }
 
+/* Responsividade */
+
+@media screen and (max-width: 1200px) {
+
+    .botoesPedidos button {
+        /* Largura mínima desejada para os botões */
+        min-width: 22%;
+        /* Evita que os botões quebrem a linha */
+        white-space: nowrap;
+        /* Permite a rolagem horizontal se os botões não couberem na tela */
+        overflow-x: auto;
+
+
+    }
+
+}
+
+
 .infoPedido {
     margin-top: 1%;
     width: 100%;
@@ -208,6 +226,19 @@
     flex-shrink: 0;
     border: 1px solid #000;
     background: #D0E2DA;
+}
+
+/* Responsividade */
+
+@media screen and (max-width: 1600px) {
+    .infoPedido {
+        /* Largura mínima desejada */
+        min-width: 900px;
+        /* ou o valor que você achar ideal */
+        overflow-x: auto;
+        white-space: nowrap;
+        /* Evita que o conteúdo quebre a linha */
+    }
 }
 
 .infoPedido h3 {
@@ -220,20 +251,16 @@
 
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1500px) {
 
-.itensPedido {
-    display: flex;
-    justify-content: space-around;
-}
-
-}
-
-@media screen and (max-width: 1600px) {
-    
-    
-    
+    .itensPedido {
+        display: flex;
+        justify-content: space-around;
     }
+
+}
+
+@media screen and (max-width: 1600px) {}
 
 .itensPedido .col-6 {
     margin-top: 0.5%;
@@ -258,15 +285,37 @@
 
 }
 
+/* Responsividade */
+
+
+/* Media query para parar de diminuir em telas maiores */
+@media screen and (max-width: 900px) {
+    .fundoItens {
+        width: 800px;
+        /* Largura mínima para a div pai */
+    }
+
+    /* Largura mínima para as divs filhas */
+    .fundoItens .descricao,
+    .fundoItens .imgItem,
+    .fundoItens .comprNov {
+        width: 100%;
+        /* Ou outro valor desejado */
+        max-width: 260px;
+        /* Define o tamanho máximo para evitar diminuir mais */
+    }
+}
+
+
 .imgItem {
     /* largura desejada */
     width: 200px;
     /* altura desejada */
     height: 300px;
-    /* para ocultar partes da imagem que excedem os limites */
+    /*  ocultar partes da imagem que excedem os limites */
     overflow: hidden;
 
-    /* Para centralizar a imagem verticalmente e horizontalmente */
+    /* centralizar a imagem verticalmente e horizontalmente */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -278,7 +327,7 @@
     width: 100%;
     /* Ajusta a altura da imagem para preencher a div */
     height: 90%;
-    /* Mantém a proporção da imagem e a insere dentro do contêiner */
+    /* Mantém a proporção da imagem e a insere dentro do conteiner */
     object-fit: contain;
 }
 
@@ -328,28 +377,3 @@
 .comprNov button {
     background-color: #2A8A5C;
 }
-
-
-
-    
-
-
-
-/* 
-
-.imgItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.imgItem img {
-    max-width: 80%;
-    max-height: 100%;
-} */
-
-/* .descricao {
-    flex-grow: 1;
-    max-width: 500px;
-    flex-wrap: wrap;
-} */

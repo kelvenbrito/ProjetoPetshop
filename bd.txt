@@ -1,0 +1,12 @@
+ create table produto(
+    -> id int(10) not null primary key,
+    -> nome varchar(30),
+    -> tipo varchar(50),
+    -> marca varchar(50),
+    -> descricao varchar(100),
+    -> valor int(10),
+    -> prod_img longblob,
+    -> qtd int(10));
+
+insert into produto(id, nome, tipo, marca, descricao, valor,  qtd)
+    -> value(1, 'joao', 'cavalo', 'cow', 'racao para cavalo', 500, 3);

@@ -2,7 +2,7 @@
 require_once 'factory.php';
 
 // Verifica se a imagem está sendo enviada pelo formulário
-if (!empty($_POST) && isset($_FILES["imagem"])) { 
+if (isset($_POST) && isset($_FILES["imagem"])) { 
 
    
     $id = $_POST["id"]; // Adicionando o endereço do formulário

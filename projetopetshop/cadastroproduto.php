@@ -12,10 +12,25 @@
 
     <h2>Cadastrado de Produtos</h2>
 
-    <form action="Conexaocadastroprodutos.php" method="post" enctype="multipart/form-data">
-        <label>Id</label><input type="text" name="id"><br>
+    <div class="container">
+        <?php if (!empty($_GET['msgErro'])) { ?>
+            <div class="alert alert-warning" role="alert">
+                <?php echo $_GET['msgErro']; ?>
+            </div>
+        <?php } ?>
+        <?php if (!empty($_GET['msgSucesso'])) { ?>
+
+            <div class="alert alert-success" role="alert">
+                <?php echo $_GET['msgSucesso']; ?>
+            </div>
+        <?php } ?>
+    </div>
+
+    <form action="cadprodutosDAO.php" method="post" enctype="multipart/form-data">
+        <label>Código do Produto</label><input type="text" name="id"><br>
         <label>Nome</label><input type="text" name="nome"><br>
-        <label>Tipo</label><input type="text" name="tipo"><br>
+        <label>Tipo </label><input type="text" name="tipo"><br>
+        <label>Categorria</label><input type="text" name="tipo"><br>
         <label>Marca</label><input type="text" name="marca"><br>
         <label>Descrição</label><input type="text" name="descricao"><br>
         <label>Valor</label><input type="text" name="valor"><br>
@@ -29,13 +44,8 @@
     <h2>Lista de produtos cadastrados</h2>
 
     <?php
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $DB = "loja";
+ require_once 'factory.php';
 
-    $conn = mysqli_connect($host, $username, $password) or die("Impossível conectar ao banco.");
-    @mysqli_select_db($conn, $DB) or die("Impossível conectar ao banco");
 
     $query = "SELECT * FROM produto";
     $result = mysqli_query($conn, $query) or die("Impossível executar a query");
@@ -48,6 +58,7 @@
                     <th>Código do Produto</th>
                     <th>Nome</th>
                     <th>Tipo</th>
+                    <th>Categoria</th>
                     <th>Marca</th>
                     <th>Descrição</th>
                     <th>Valor</th>
@@ -66,6 +77,9 @@
                         </td>
                         <td>
                             <?php echo $row->tipo; ?>
+                        </td>
+                        <td>
+                            <?php echo $row->categoria; ?>
                         </td>
                         <td>
                             <?php echo $row->marca; ?>

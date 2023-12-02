@@ -53,6 +53,11 @@ form {
     .table tr:hover {
     background-color: #e0e0e0;
     }
+
+    .produto-row img{
+        width: 5px;
+        height: auto;
+    }
     /* ajuste técnico rodapé */
     .rodape{
     height: 8vh;

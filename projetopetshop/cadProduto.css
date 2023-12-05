@@ -55,7 +55,7 @@ form {
     }
 
     .produto-row img{
-        width: 5px;
+        width: 50px;
         height: auto;
     }
     /* ajuste técnico rodapé */
@@ -63,14 +63,14 @@ form {
     height: 8vh;
     }
     /* botoes tabela */
-    .btn-listar {
-    background-color: #28a745;
+    .produto-row button {
+    background-color: #000301;
     color: #fff;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 10px; 
     cursor: pointer;
     border-radius: 5px;
     }
     .btn-listar:hover {
-    background-color: #218838;
+    background-color: #001a06;
     }

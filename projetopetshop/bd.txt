@@ -11,3 +11,17 @@
 
 insert into produto(id, nome, tipo, marca, descricao, valor,  qtd)
     -> value(1, 'joao', 'cavalo', 'cow', 'racao para cavalo', 500, 3);
+
+
+    <div class="radio-input-wrapper">
+    <?php
+    while ($row_categoria = mysqli_fetch_assoc($result_categorias)) {
+        $categoria = $row_categoria['categoria'];
+    ?>
+    <label class="label">
+        <input value="<?php echo $categoria; ?>" name="value-radio" class="radio-input" type="radio">
+        <div class="radio-design"></div>
+        <div class="label-text" name="textoFiltro"><?php echo $categoria; ?></div>
+    </label>
+    <?php } ?>
+</div>

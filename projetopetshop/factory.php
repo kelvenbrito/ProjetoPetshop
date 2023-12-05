@@ -5,8 +5,8 @@ $password = "";
 $DB = "loja";
 
 
-$conn = mysqli_connect($host, $username, $password) or die("Impossível conectar ao banco.");
+$conn = mysqli_connect($host, $username, $password) or die("Falha ao conectar ao banco de dados.");
 
-@mysqli_select_db($conn, $DB) or die("Impossível Conectar");
+@mysqli_select_db($conn, $DB) or die("Falha ao conectar ao Database");
 
 ?>

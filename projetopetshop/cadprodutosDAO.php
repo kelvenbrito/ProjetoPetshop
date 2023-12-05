@@ -2,43 +2,74 @@
 require_once 'factory.php';
 
 // Verifica se a imagem está sendo enviada pelo formulário
-if (isset($_POST) && isset($_FILES["imagem"])) { 
+if (isset($_POST) && isset($_FILES["imagem"])) {
 
-   
+
+
     $id = $_POST["id"]; // Adicionando o endereço do formulário
     $nome = $_POST["nome"]; // Adicionando o nome do formulário 
     $tipo = $_POST["tipo"];
     $categoria = $_POST["categoria"];
     $marca = $_POST["marca"];
-    $descricao = $_POST["descricao"]; 
-    $valor = $_POST["valor"]; 
-    $imagem = $_FILES["imagem"];
+    $descricao = $_POST["descricao"];
+    $valor = $_POST["valor"];
+    $img = $_FILES["imagem"]['name'];
     $qtd = $_POST["qtd"];
 
-    try {
-        $nomeFinal = time() . '.jpg';
-        if (move_uploaded_file($imagem['tmp_name'], $nomeFinal)) {
-            $tamanhoImg = filesize($nomeFinal);
-            $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg));
+    $extensao1 = strtolower(pathinfo($img, PATHINFO_EXTENSION)); //pega a extensao do arquivo
+    $imagem = "imagens/imagensprod/" . time() . "/"; //define o diretorio para onde enviaremos o arquivo
+    mkdir($imagem, 0777, true);
+    move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem . "1." . $extensao1);
 
-     
+    if ($_POST['enviarDados'] == 'cad') { // CADASTRAR!!!
 
-         
+        try {
 
-            $query = "INSERT INTO produto (id, nome, tipo,categoria, marca, descricao, valor, prod_img, qtd) VALUES ('$id', '$nome', '$tipo','$categoria', '$marca', '$descricao', '$valor', '$mysqlImg', '$qtd')";
 
-            mysqli_query($conn, $query) or die("O sistema não foi capaz de executar a query");
+        
 
-            unlink($nomeFinal);
+
+
+            $query = "INSERT INTO produto ( prod_img, id, nome, tipo,categoria, marca, descricao, valor, qtd) VALUES ('$imagem/1.$extensao1', '$id', '$nome', '$tipo','$categoria', '$marca', '$descricao', '$valor',  '$qtd')";
+
+            mysqli_query($conn, $query);
+
 
             header("location:cadastroproduto.php?msgSucesso=Cadastro realizado com sucesso!");
-          
+
+
+        } catch (Exception $e) {
+            header("Location: cadastroproduto.php?msgErro=Falha ao cadastrar...");
         }
-    } catch (PDOException $e) {
-        header("Location: index.php?msgErro=Falha ao cadastrar...");
-    }
+
+    } elseif ($_POST['enviarDados'] == 'alt') {
+
+
+      
+
+        $query = "UPDATE produto SET  prod_img='$imagem/1.$extensao1', nome='$nome', tipo='$tipo', categoria='$categoria', marca='$marca', descricao='$descricao', valor='$valor', qtd='$qtd' WHERE id = $id";
+
+
+
+
+
+if (mysqli_query($conn, $query)) {
+    header("location:cadastroproduto.php?msgSucesso=Dados alterados com sucesso!");
 } else {
+    header("location:cadastroproduto.php?msgErro=Erro ao alterar os dados: " . mysqli_error($conn));
+}
+
+    } elseif ($_POST['enviarDados'] == 'del') {
+        $query = "DELETE FROM produto WHERE id = $id ";
+        mysqli_query($conn, $query);
+    
+        header("location:cadastroproduto.php?msgSucesso=Dados deletados com sucesso!");
+    } else{}
+    
+}else {
     header("Location: cadastroproduto.php?msgErro=Erro de acesso.");
+
+
 }
 die();
 ?>

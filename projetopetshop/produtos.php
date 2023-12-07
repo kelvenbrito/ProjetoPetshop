@@ -182,87 +182,65 @@
                 <button type="submit" class="btn btn-link" id="aplicar">Aplicar</button>
 
             </div>
-            <?php
-            require_once 'factory.php';
-            // Verifica se o formulário foi submetido
-            $query = "SELECT * FROM produto LIMIT 2";
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               
-                if (isset($_POST['value-radio'])) {
-                    $filtro = strtoupper($_POST['value-radio']);
-                    var_dump($filtro);
-
-                    // Query SQL com filtro por categoria
-                    $query = "SELECT * FROM produto WHERE UPPER(categoria) = '$filtro' OR UPPER(tipo) = '$filtro' OR UPPER(marca) = '$filtro'";
-                } elseif (isset($_POST['rangeValor']) && $_POST['rangeValor'] != 0) {
-                    $filtrovalor = strtoupper($_POST['rangeValor']);
-                    var_dump($filtrovalor);
-                    $query = "SELECT * FROM produto WHERE valor < '$filtrovalor'";
-                } elseif (isset($_POST['radiopg']) && $_POST['radiopg'] > 0) {
-                    $pg = strtoupper($_POST['radiopg']);
-                    $query = "SELECT * FROM produto LIMIT 2 OFFSET $pg";
-                    var_dump($query);
-
-
-                } else {
-                    // Caso o formulário tenha sido submetido, mas nenhum filtro tenha sido selecionado, exibe todos os resultados
-                    $query = "SELECT * FROM produto LIMIT 2";
-                }
-
-                // Executa a query
-                $result = mysqli_query($conn, $query) or die("Impossível executar a query");
-            }
-            ?>
+        </form>
 
 
 
 
 
-            <div class="cardProdutos">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <?php while ($row = mysqli_fetch_object($result)) { ?>
-                        <div class="col">
-                            <div class="card">
-                                <?php
-                                // Obtendo o caminho da imagem do banco de dados
-                                $caminhoImagem = $row->prod_img;
-                                // Exibindo a imagem se existir
-                                if ($caminhoImagem && file_exists($caminhoImagem)) {
-                                    ?>
-                                    <img src='<?php echo $caminhoImagem; ?>' class="card-img-top imagembd"
-                                        alt='Imagem do Produto 1'>
-                                <?php } else { ?>
-                                    <span>Nenhuma imagem disponível</span>
-                                <?php } ?>
+        <div class="cardProdutos">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <?php
+                require_once 'produtosDAO.php';
+              
+                 // Executa a query
+                 $result = mysqli_query($conn, $query) or die("Impossível executar a query");
+                while($row = mysqli_fetch_object($result)) { ?>
+                    <div class="col">
+                        <div class="card">
+                            <?php
+                            // Obtendo o caminho da imagem do banco de dados
+                            $caminhoImagem = $row->prod_img;
+                            // Exibindo a imagem se existir
+                            if($caminhoImagem && file_exists($caminhoImagem)) {
+                                ?>
+                                <img src='<?php echo $caminhoImagem; ?>' class="card-img-top imagembd"
+                                    alt='Imagem do Produto 1'>
+                            <?php } else { ?>
+                                <span>Nenhuma imagem disponível</span>
+                            <?php } ?>
 
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?php echo $row->descricao; ?>
-                                    </h5>
-                                    <p class="card-text">
-                                        R$
-                                        <?php echo $row->valor; ?>
-                                    </p>
-                                    <button>Comprar</button>
-                                    <input type="number" class="quant" placeholder="1">
-                                </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <?php echo $row->descricao; ?>
+                                </h5>
+                                <p class="card-text">
+                                    R$
+                                    <?php echo $row->valor; ?>
+                                </p>
+                                <button>Comprar</button>
+                                <input type="number" class="quant" placeholder="1">
                             </div>
                         </div>
+                    </div>
 
-                    <?php } ?>
-                </div>
+                <?php } ?>
             </div>
+        </div>
 
-
+        <form action="" method="post" enctype="multipart/form-data">
             <section class="prodPg">
                 <div class="mydict">
                     <div>
 
-                        <label>
-                            <input type="radio" value="1" checked>
-                            <span>
-                                < </span>
-                        </label>
+
+                        <button type="submit" class="btn btn-link" id="aplicar">
+                            <label>
+                                <span>
+                                    < </span>
+                            </label>
+                        </button>
+
 
 
                         <?php
@@ -272,31 +250,41 @@
                         $total_registros = $row['total'] / 2;
                         $j = 0;
 
-                        for ($i = 1; $i <= $total_registros; $i++) {
+                        for($i = 1; $i <= $total_registros; $i++) {
 
                             ?>
-                            <label>
+                           
 
 
-                               <a href="produtos.php"> <input type="radio" name="radiopg" value="<?php echo ($j * 2) ?>">
-                                <span>
-                                    <?php echo "$i" ?>
-                                </span>
-                                </a>
+                                <button type="submit" class="btn btn-link" id="aplicar" name="radiopg"
+                                    value="<?php echo ($j * 2) ?>">
+                                    <label>
+                                    <span>
+
+                                        <?php echo "$i" ?>
+                                    </span>
+                                    </label>
+                                </button>
                                 <?php $j = $i ?>
 
-                            </label>
+                           
                         <?php } ?>
-                        <label>
-                            <input type="radio" value="1" checked>
-                            <span>
-                                > </span>
-                        </label>
+                      
+                            <button type="submit" class="btn btn-link" id="aplicar">
+                            <label>
+                                <span>
+                                    >
+                                </span>
+                                </label>
+                            </button>
+                        
 
                     </div>
+
                 </div>
             </section>
         </form>
+
         </div>
     </section>
 
@@ -343,6 +331,7 @@
 
 
 </body>
+
 
 
 </html>

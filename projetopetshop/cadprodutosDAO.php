@@ -1,8 +1,20 @@
 <?php
-require_once 'factory.php';
+require_once 'conexaoBD.php';
+// Definir o BD (e a tabela)
+// Conectar ao BD (com o PHP)
 
-// Verifica se a imagem está sendo enviada pelo formulário
-if (isset($_POST) && isset($_FILES["imagem"])) {
+// session_start();
+// if (empty($_SESSION)) {
+//     // Significa que as variáveis de SESSAO não foram definidas.
+//     // Não poderia acessar aqui.
+//     header("Location: cadastro.php?msgErro=Você precisa se autenticar no sistema.");
+//     die();
+// }
+
+// Verifica se as informaçoes estãp sendo enviada pelo formulário
+if (
+    isset($_POST) && isset($_FILES["imagem"]["name"]) && !empty($_POST) && (!empty($_FILES["imagem"]["name"])) 
+) {
 
 
 
@@ -10,7 +22,7 @@ if (isset($_POST) && isset($_FILES["imagem"])) {
     $nome = $_POST["nome"]; // Adicionando o nome do formulário 
     $tipo = $_POST["tipo"];
     $categoria = $_POST["categoria"];
-    $marca = $_POST["marca"];
+    $marca = $_POST["marca"];  
     $descricao = $_POST["descricao"];
     $valor = $_POST["valor"];
     $img = $_FILES["imagem"]['name'];
@@ -64,10 +76,12 @@ if (mysqli_query($conn, $query)) {
         mysqli_query($conn, $query);
     
         header("location:cadastroproduto.php?msgSucesso=Dados deletados com sucesso!");
-    } else{}
+    } else{
+        header("Location: index_logado.php?msgErro=Erro de acesso (Operação não definida).");
+    }
     
 }else {
-    header("Location: cadastroproduto.php?msgErro=Erro de acesso.");
+    header("Location: cadastroproduto.php?msgErro=Falha ao cadastrar anúncio...");
 
 
 }

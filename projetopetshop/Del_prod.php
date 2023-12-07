@@ -16,7 +16,7 @@
     <h2>Alterar Produto</h2>
 
     <?php
-    require_once 'factory.php';
+    require_once 'conexaoBD.php';
 
     if (isset($_GET['id'])) {
         $produto_id = $_GET['id'];

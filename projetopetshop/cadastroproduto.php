@@ -49,7 +49,7 @@
     <h2>Lista de produtos cadastrados</h2>
 
     <?php
-    require_once 'factory.php';
+    require_once 'conexaoBD.php';
 
     // Verifica se o formulário foi submetido
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

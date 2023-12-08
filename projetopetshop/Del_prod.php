@@ -45,6 +45,6 @@
 
 
         <button type="submit" name="enviarDados" class="btn btn-primary" value="del">Excluir</button>
-        <a href="cadastroproduto" class="btn btn-danger">Cancelar</a>
+        <a href="cadastroproduto.php" class="btn btn-danger">Cancelar</a>
 
     </form>

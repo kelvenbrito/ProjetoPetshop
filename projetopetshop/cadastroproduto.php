@@ -170,4 +170,19 @@
 
 </body>
 
+
+Para limpar os campos de texto ao clicar no botão "Apagar", você pode utilizar JavaScript para definir os valores dos
+campos como vazio. Aqui está um exemplo de como fazer isso:
+
+Primeiro, adicione um identificador (ID) para cada um dos campos de entrada que você deseja limpar. Vamos supor que
+todos os campos de entrada que você quer limpar tenham IDs únicos. Adicione o ID para cada campo de entrada:
+
+html
+Copy code
+<input type="file" name="imagem" id="imagemField" />
+<input type="text" name="id" id="idField"><br>
+<input type="text" name="nome" id="nomeField"><br>
+<input type="text" name="tipo" id="tipoField"><br>
+
+
 </html>

@@ -35,22 +35,23 @@ if (
 
     if ($_POST['enviarDados'] == 'cad') { // CADASTRAR!!!
 
-        try {
+    
 
 
         
 
 
 
-            $query = "INSERT INTO produto ( prod_img, id, nome, tipo,categoria, marca, descricao, valor, qtd) VALUES ('$imagem/1.$extensao1', '$id', '$nome', '$tipo','$categoria', '$marca', '$descricao', '$valor',  '$qtd')";
+            $stmt = $conn->prepare("INSERT INTO produto ( prod_img, id, nome, tipo,categoria, marca, descricao, valor, qtd)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssssss,'$imagem/1.$extensao1', '$id', '$nome', '$tipo','$categoria', '$marca', '$descricao', '$valor',  '$qtd'");
 
-            mysqli_query($conn, $query);
+            if ($stmt->execute()) {
 
 
             header("location:cadastroproduto.php?msgSucesso=Cadastro realizado com sucesso!");
 
 
-        } catch (Exception $e) {
+        } else {
             header("Location: cadastroproduto.php?msgErro=Falha ao cadastrar...");
         }
 
@@ -77,7 +78,7 @@ if (mysqli_query($conn, $query)) {
     
         header("location:cadastroproduto.php?msgSucesso=Dados deletados com sucesso!");
     } else{
-        header("Location: index_logado.php?msgErro=Erro de acesso (Operação não definida).");
+        header("location:cadastroproduto.php?msgErro=Erro de acesso (Operação não definida).");
     }
     
 }else {

@@ -247,7 +247,7 @@
                         $query = "SELECT COUNT(*) as total FROM produto";
                         $result = mysqli_query($conn, $query);
                         $row = mysqli_fetch_assoc($result);
-                        $total_registros = $row['total'] / 2;
+                        $total_registros = $row['total'] / 9;
                         $j = 0;
 
                         for($i = 1; $i <= $total_registros; $i++) {
@@ -257,7 +257,7 @@
 
 
                                 <button type="submit" class="btn btn-link" id="aplicar" name="radiopg"
-                                    value="<?php echo ($j * 2) ?>">
+                                    value="<?php echo ($j * 9) ?>">
                                     <label>
                                     <span>
 
@@ -331,6 +331,7 @@
 
 
 </body>
+<script src="script.js"></script>
 
 
 

@@ -1,0 +1,267 @@
+
+.banner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(217, 217, 217);
+
+}
+
+.banner h1 {
+    font-size: 4vh;
+}
+
+.filtro {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    background-color: rgb(217, 217, 217);
+    width: 100%;
+    margin-bottom: -70px;
+}
+
+.filtro input {
+
+    margin-left: 2vh;
+
+}
+
+.filtro h1 {
+
+    margin-left: 2vh;
+
+}
+
+.filtro h2 {
+
+    margin-left: 2vh;
+
+}
+
+.filtro p {
+    margin-left: 2vh;
+}
+
+.preco {
+    font-size: 24px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.filtro .mudarPreco{
+    font-size: 24px;
+    text-align: center;
+}
+
+.filtro .slider {
+    width: 95%;
+    height: 15px;
+    border-radius: 5px;
+    background-color: #1636d4;
+    background-image: linear-gradient(43deg, #4158D0 0%, #50b0c8 46%, #16a31d 100%);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.filtro .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #025e33;
+    background-image: linear-gradient(160deg, #00b327 0%, #80D0C7 100%);
+    cursor: pointer;
+}
+
+.filtro .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    cursor: pointer;
+}
+
+.filtro button {
+    
+    margin-bottom: 2vh;
+    width: 100%;
+    background-color: #000;
+    height: 6vh;
+}
+
+.filtro button p {
+    font-size: 3vh;
+    color: aliceblue;
+    align-items: center;
+    text-align: center;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 14px 16px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.label:hover,
+.label:focus-within,
+.label:active {
+    background: hsla(0, 0%, 80%, 0.664);
+}
+
+.radio-input {
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.radio-design {
+    width: 22px;
+    height: 22px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(89, 97%, 13%));
+    position: relative;
+}
+
+.radio-design::before {
+    content: '';
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: hsl(0, 0%, 90%);
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.radio-input:checked+.radio-design::before {
+    transform: scale(0);
+}
+
+.label-text {
+    color: hsl(0, 0%, 60%);
+    margin-left: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.radio-input:checked~.label-text {
+    color: hsl(0, 0%, 40%);
+}
+
+.prod {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.cardProdutos {
+    margin-top: 2vh;
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cardProdutos button {
+    text-align: center;
+    font-size: 2vh;
+    background-color: #000;
+    color: aliceblue;
+}
+
+.cardProdutos .quant {
+    width: 10%;
+    text-align: center;
+    font-size: 2vh;
+}
+
+.imagembd {
+    width: 200px; /* Defina o tamanho máximo desejado */
+    height: 150px; /* Mantém a proporção da imagem */
+}
+
+:focus {
+    outline: 0;
+    border-color: #22ff52;
+    box-shadow: 0 0 0 4px #b5fcf8;
+}
+
+.mydict {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50%;
+    margin-bottom: 20px;
+    }
+
+.mydict button {
+    margin: 0 5px; /* Espaçamento entre os botões de paginação */
+}
+
+
+.mydict div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.mydict input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.mydict input[type="radio"]:checked+span {
+    box-shadow: 0 0 0 0.0625em #27ed00;
+    background-color: #dee7ff;
+    z-index: 1;
+    color: #2fed00;
+}
+
+label span {
+    display: block;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0.375em .75em;
+    position: relative;
+    margin-left: .0625em;
+    box-shadow: 0 0 0 0.0625em #b5bfd9;
+    letter-spacing: .05em;
+    color: #3e4963;
+    text-align: center;
+    transition: background-color .5s ease;
+}
+
+label:first-child span {
+    border-radius: .375em 0 0 .375em;
+}
+
+label:last-child span {
+    border-radius: 0 .375em .375em 0;
+}
+
+.adCadastro {
+    color: green;
+    background-color: #2A8A5C;
+}

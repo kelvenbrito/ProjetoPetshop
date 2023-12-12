@@ -23,20 +23,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($tipoConta === "C") {
                 $_SESSION['tipo'] = $tipoConta;
                 header("location:login.php?msgSucesso=Login bem-sucedido!");
-                exit();
+                
             } elseif ($tipoConta === "F") {
                 $_SESSION['tipo'] = $tipoConta;
                 header("location: cadastroproduto.php?msgSucesso=Login bem-sucedido!");
-                exit();
+              
             } else {
                 header("location:login.php?msgErro=Você não tem permissão para acessar essa conta!");
             }
-            exit();
+            
         } else {
             $_SESSION['error'] = "Senha incorreta. Tente novamente.";
             header("location:login.php?msgErro=Senha incorreta. Tente novamente!");
           
-            exit();
+          
         }
     } else {
 
@@ -44,15 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Destruir a SESSAO
         session_destroy();
         header("location:login.php?msgErro=Usuário não encontrado. Verifique suas credenciais!");
-         exit();
+        
     }
-
+    $stmtLogin->close();
 
 } else {
 
     header("location:login.php?msgErro=Método de requisição inválido!");
-    exit();
+   
 }
-
+$conn->close();
 
 ?>

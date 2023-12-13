@@ -49,6 +49,6 @@
 
 
         <button type="submit" name="enviarDados" class="btn btn-primary" value="alt">Salvar Alterações</button>
-        <a href="cadastroproduto"><button class="btn btn-danger" value="del">Cancelar</button></a>
+        <a href="cadastroproduto"><button class="btn btn-danger" >Cancelar</button></a>
 
     </form>

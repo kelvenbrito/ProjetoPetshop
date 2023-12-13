@@ -79,7 +79,6 @@
                         <div class="radio-design"></div>
                         <div class="label-text" name="textoFiltro">Cavalo</div>
                     </label>
-                    <!-- Outros radio buttons para outras categorias -->
 
                     <label class="label">
                         <input value="Vaca" name="value-radio" id="animal-3" class="radio-input" type="radio">
@@ -163,7 +162,7 @@
 
                 <div class="mudarPreco">
                     <p id="precoProd">R$0</p>
-                <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
+                    <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
                 </div>
             </div>
         </form>
@@ -171,10 +170,12 @@
         <div class="cardProdutos">
             <div class="row row-cols-1 row-cols-md-3">
                 <?php
+                // Requisita o arquivo que contém as operações do banco de dados para os produtos
                 require_once 'produtosDAO.php';
 
-                // Executa a query
+                // Executa a query para buscar os produtos no banco de dados
                 $result = mysqli_query($conn, $query) or die("Impossível executar a query");
+                // Itera sobre os resultados obtidos da query para exibir os produtos
                 while ($row = mysqli_fetch_object($result)) { ?>
                     <div class="col">
                         <div class="card">
@@ -193,10 +194,12 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">
+                                    <!-- Exibe a descrição do produto -->
                                     <?php echo $row->descricao; ?>
                                 </h5>
                                 <p class="card-text">
                                     R$
+                                    <!-- Exibe o valor do produto -->
                                     <?php echo $row->valor; ?>
                                 </p>
                                 <button>Comprar</button>
@@ -208,40 +211,43 @@
                 <?php } ?>
             </div>
         </div>
+    </section>
+    <form action="" method="post" enctype="multipart/form-data">
+        <section class="prodPg">
+            <div class="mydict">
+
+                <?php
+                // Query para contar o número total de registros na tabela 'produto'
+                $query = "SELECT COUNT(*) as total FROM produto";
+                $result = mysqli_query($conn, $query);
+                // Obtém o número total de registros
+                $row = mysqli_fetch_assoc($result);
+                $total_registros = $row['total'] / 12; // Define o total de páginas, considerando 12 registros por página
+                // Verifica se há um número exato de páginas ou se é necessário adicionar mais uma página
+                if ($row['total'] % 12 != 0) {
+                    $total_registros++;
+                }
+                $j = 0;
+                // Loop para criar botões correspondentes a cada página de registros
+                for ($i = 1; $i <= $total_registros; $i++) {
+                    ?>
+                     <!-- Botão para selecionar a página -->
+                    <button type="submit" class="btn btn-link" id="aplicar" name="radiopg" value="<?php echo ($j * 12) ?>">
+                        <label>
+                            <span>
+
+                                <?php echo "$i" ?>
+                            </span>
+                        </label>
+                    </button>
+
+                   <!-- <?php $j = $i ?> //Atualiza o valor de $j para controlar a posição inicial dos registros na próxima página  --> -->
+
+                <?php } ?>
+                <button class="adCadastro"><a href="cadastroproduto.php">Adicionar Produto</a></button>
+            </div>
         </section>
-        <form action="" method="post" enctype="multipart/form-data">
-            <section class="prodPg">
-                <div class="mydict">
-
-                    <?php
-                    $query = "SELECT COUNT(*) as total FROM produto";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_assoc($result);
-                    $total_registros = $row['total'] / 12;
-                    if ($row['total'] % 12 != 0) {
-                        $total_registros++;
-                    }
-                    $j = 0;
-
-                    for ($i = 1; $i <= $total_registros; $i++) {
-                        ?>
-                        <button type="submit" class="btn btn-link" id="aplicar" name="radiopg"
-                            value="<?php echo ($j * 12) ?>">
-                            <label>
-                                <span>
-
-                                    <?php echo "$i" ?>
-                                </span>
-                            </label>
-                        </button>
-
-                        <?php $j = $i ?>
-
-                    <?php } ?>
-                    <button class="adCadastro"><a href="cadastroproduto.php">Adicionar Produto</a></button>
-                </div>
-            </section>
-        </form>
+    </form>
     <footer>
         <div class="footer">
             <div class="ladoEsqFooter">
@@ -283,4 +289,5 @@
     </footer>
 </body>
 <script src="script.js"></script>
+
 </html>

@@ -16,21 +16,25 @@
     <h2>Alterar Produto</h2>
 
     <?php
+    // Inclui o arquivo de conexão com o banco de dados
     require_once 'db.php';
 
+    // Verifica se o parâmetro 'id' está presente na URL (via GET)
     if (isset($_GET['id'])) {
+        // Obtém o ID do produto da URL
         $produto_id = $_GET['id'];
 
-
-
-
-
+        // Query para selecionar os detalhes do produto com base no ID fornecido
         $query = "SELECT * FROM produto WHERE id = $produto_id";
+
+        // Executa a query para obter os detalhes do produto
         $result = mysqli_query($conn, $query) or die("Impossível executar a query");
+
+        // Obtém os detalhes do produto como um objeto
         $row = mysqli_fetch_object($result);
     }
-
     ?>
+
 
     <form action="cadprodutosDAO.php" method="post" enctype="multipart/form-data">
         <label>Código do Produto</label><input type="text" name="id" value="<?php echo $row->id; ?>" readonly><br>
@@ -45,6 +49,6 @@
 
 
         <button type="submit" name="enviarDados" class="btn btn-primary" value="alt">Salvar Alterações</button>
-        <a href="cadastroproduto" class="btn btn-danger">Cancelar</a>
+        <a href="cadastroproduto"><button class="btn btn-danger" value="del">Cancelar</button></a>
 
     </form>

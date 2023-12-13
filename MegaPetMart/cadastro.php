@@ -274,12 +274,15 @@
 
 <script>
     <?php if (!empty($_GET['msgErro'])) { ?>
+        // Se houver um parâmetro 'msgErro' na URL, exibe um alerta com seu valor
         alert("<?php echo $_GET['msgErro']; ?>");
     <?php } ?>
     <?php if (!empty($_GET['msgSucesso'])) { ?>
+        // Se houver um parâmetro 'msgSucesso' na URL, exibe um alerta com seu valor
         alert("<?php echo $_GET['msgSucesso']; ?>");
     <?php } ?>
 </script>
+
 
 
 </html>

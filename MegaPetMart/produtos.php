@@ -11,17 +11,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat&family=Montserrat+Alternates:ital,wght@1,600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <title>Produtos</title>
 </head>
 
 <body class="body-no-margin">
     <header>
         <div class="cima">
-            <a href="index.html"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
+            <a href="index.php"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
             <div id="divBusca">
                 <div class="inputBox_container">
                     <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
@@ -33,11 +33,11 @@
                 </div>
             </div>
             <div class="pedidos">
-                <a href="pedidos.html"><img src="images/dropbox.png" alt=""></a>
-                <a href="pedidos.html">Meus Pedidos</a>
+                <a href="pedidos.php"><img src="images/dropbox.png" alt=""></a>
+                <a href="pedidos.php">Meus Pedidos</a>
             </div>
             <div class="carrinho">
-                <a href="carrinho.html">
+                <a href="">
                     <button data-quantity="0" class="btn-cart">
                         <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
                             xmlns="http://www.w3.org/2000/svg">
@@ -51,19 +51,35 @@
                 </a>
             </div>
             <div class="login">
-                <a href="login.html"><button class="entrar_cadastro">
-                        <span>Entrar</span>
-                    </button></a>
-                <a href="cadastro.html"><button class="entrar_cadastro">
-                        <span>Cadastrar</span>
-                    </button></a>
-            </div>
+        <?php
+
+        session_start();
+        // Verificar se $_SESSION['usuario'] está definida
+        if (isset($_SESSION['usuario'])) {
+          // Mostrar o nome do usuário
+          echo '<div class="usuarioLogado">';
+          echo 'Bem-vindo, ' . $_SESSION['usuario'];
+          echo '</div>';
+          echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
+        } else {
+          // Se não estiver logado, mostrar botões de login e cadastro
+          echo '<div class="login">';
+          echo '<a href="login.php"><button class="entrar_cadastro">';
+          echo '<span>Entrar</span>';
+          echo '</button></a>';
+          echo '<a href="cadastro.php"><button class="entrar_cadastro">';
+          echo '<span>Cadastrar</span>';
+          echo '</button></a>';
+          echo '</div>';
+        }
+        ?>
+      </div>
         </div>
     </header>
     <div class="navBar">
-        <a href="quemsomos.html">Quem Somos</a>
+        <a href="quemsomos.php">Quem Somos</a>
         <a href="produtos.php">Produtos</a>
-        <a href="contato.html">Contato</a>
+        <a href="contato.php">Contato</a>
     </div>
     <section class="prod">
 
@@ -79,6 +95,7 @@
                         <div class="radio-design"></div>
                         <div class="label-text" name="textoFiltro">Cavalo</div>
                     </label>
+                    <!-- Outros radio buttons para outras categorias -->
 
                     <label class="label">
                         <input value="Vaca" name="value-radio" id="animal-3" class="radio-input" type="radio">
@@ -162,14 +179,14 @@
 
                 <div class="mudarPreco">
                     <p id="precoProd">R$0</p>
-                    <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
+                <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
                 </div>
             </div>
         </form>
 
         <div class="cardProdutos">
             <div class="row row-cols-1 row-cols-md-3">
-                <?php
+            <?php
                 // Requisita o arquivo que contém as operações do banco de dados para os produtos
                 require_once 'produtosDAO.php';
 
@@ -211,43 +228,40 @@
                 <?php } ?>
             </div>
         </div>
-    </section>
-    <form action="" method="post" enctype="multipart/form-data">
-        <section class="prodPg">
-            <div class="mydict">
-
-                <?php
-                // Query para contar o número total de registros na tabela 'produto'
-                $query = "SELECT COUNT(*) as total FROM produto";
-                $result = mysqli_query($conn, $query);
-                // Obtém o número total de registros
-                $row = mysqli_fetch_assoc($result);
-                $total_registros = $row['total'] / 12; // Define o total de páginas, considerando 12 registros por página
-                // Verifica se há um número exato de páginas ou se é necessário adicionar mais uma página
-                if ($row['total'] % 12 != 0) {
-                    $total_registros++;
-                }
-                $j = 0;
-                // Loop para criar botões correspondentes a cada página de registros
-                for ($i = 1; $i <= $total_registros; $i++) {
-                    ?>
-                     <!-- Botão para selecionar a página -->
-                    <button type="submit" class="btn btn-link" id="aplicar" name="radiopg" value="<?php echo ($j * 12) ?>">
-                        <label>
-                            <span>
-
-                                <?php echo "$i" ?>
-                            </span>
-                        </label>
-                    </button>
-
-                   <!-- <?php $j = $i ?> //Atualiza o valor de $j para controlar a posição inicial dos registros na próxima página  --> -->
-
-                <?php } ?>
-                <button class="adCadastro"><a href="cadastroproduto.php">Adicionar Produto</a></button>
-            </div>
         </section>
-    </form>
+        <form action="" method="post" enctype="multipart/form-data">
+            <section class="prodPg">
+                <div class="mydict">
+
+                    <?php
+                    $query = "SELECT COUNT(*) as total FROM produto";
+                    $result = mysqli_query($conn, $query);
+                    $row = mysqli_fetch_assoc($result);
+                    $total_registros = $row['total'] / 12;
+                    if ($row['total'] % 12 != 0) {
+                        $total_registros++;
+                    }
+                    $j = 0;
+
+                    for ($i = 1; $i <= $total_registros; $i++) {
+                        ?>
+                        <button type="submit" class="btn btn-link" id="aplicar" name="radiopg"
+                            value="<?php echo ($j * 12) ?>">
+                            <label>
+                                <span>
+
+                                    <?php echo "$i" ?>
+                                </span>
+                            </label>
+                        </button>
+
+                        <?php $j = $i ?>
+
+                    <?php } ?>
+                  
+                </div>
+            </section>
+        </form>
     <footer>
         <div class="footer">
             <div class="ladoEsqFooter">
@@ -278,16 +292,18 @@
                 <a href="">Política de white hat</a>
             </div>
             <div class="politica3">
-                <h1>Institucional</h1>
-                <a href="">Sustentabilidade</a><br>
-                <a href="">Empresa</a><br>
-                <a href="">Termos e condições de uso</a><br>
-                <a href="">Canal de ética e conduta</a><br>
-                <a href="">Trabalhe conosco</a>
-            </div>
+        <h4>Encontre uma loja</h4>
+        <div class="mapa">
+          <!-- Elemento onde o mapa será exibido -->
+          <div id="mapa"></div>
+          <!-- Inclusão da biblioteca Leaflet -->
+          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        </div>
+      </div>
         </div>
     </footer>
 </body>
+<script src="mapaLoja.js"></script>
 <script src="script.js"></script>
 
 </html>

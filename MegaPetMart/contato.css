@@ -16,6 +16,7 @@ body {
 }
 
 .informacoes {
+    margin-left: 10%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -25,7 +26,7 @@ body {
 }
 
 .informacoes2 {
-    margin-right: 15%;
+    margin-right: 10%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -35,6 +36,7 @@ body {
 }
 
 .faleConosco {
+    margin-left: 10%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -63,4 +65,32 @@ body {
 
 #btnLogin:hover {
     background-color: #15b065;
+}
+
+/* Responsividade geral */
+@media only screen and (max-width: 768px) {
+    .tipos {
+        margin-left: 0;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .informacoes,
+    .informacoes2,
+    .faleConosco,
+    .input,
+    .input2 {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .input,
+    .input2 {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    #btnLogin {
+        width: 100%;
+    }
 }

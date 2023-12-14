@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="cadastro.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="cadastro.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <title>Sua Página</title>
 </head>
@@ -17,7 +16,7 @@
 <body>
   <header>
     <div class="cima">
-      <a href="index.html"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
+      <a href="index.php"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
       <div id="divBusca">
         <div class="inputBox_container">
           <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
@@ -29,11 +28,11 @@
         </div>
       </div>
       <div class="pedidos">
-        <a href="pedidos.html"><img src="images/dropbox.png" alt=""></a>
-        <a href="pedidos.html">Meus Pedidos</a>
+        <a href="pedidos.php"><img src="images/dropbox.png" alt=""></a>
+        <a href="pedidos.php">Meus Pedidos</a>
       </div>
       <div class="carrinho">
-        <a href="carrinho.html">
+        <a href="">
           <button data-quantity="0" class="btn-cart">
             <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
               xmlns="http://www.w3.org/2000/svg">
@@ -57,174 +56,182 @@
     </div>
   </header>
   <div class="navBar">
-    <a href="quemsomos.html">Quem Somos</a>
+    <a href="quemsomos.php">Quem Somos</a>
     <a href="produtos.php">Produtos</a>
-    <a href="contato.html">Contato</a>
+    <a href="contato.php">Contato</a>
   </div>
   <br>
 
   <form class="needs-validation1" novalidate action="cadastroProcessa.php" method="post" onsubmit="enviar()">
-    <h1>CADASTRE-SE</h1>
-    <div class="form-row mb-4">
-      <div class="col-md-4 mb-3">
-        <label for="pNome">Primeiro nome</label>
-        <input type="text" class="form-control" id="pNome" name="pNome" placeholder="Nome" pattern="[A-Za-z]+" required>
-        <div class="valid-feedback">
-          Tudo certo!
+        <h1 class="mb-4">CADASTRE-SE</h1>
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <label for="pNome">Primeiro nome</label>
+                <input type="text" class="form-control" id="pNome" name="pNome" placeholder="Nome" pattern="[A-Za-z]+"
+                    required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="sNome">Sobrenome</label>
+                <input type="text" class="form-control" id="sNome" name="sNome" placeholder="Sobrenome"
+                    pattern="[A-Za-z]+" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="usuario">Usuário</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="arroba">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário"
+                        aria-describedby="inputGroupPrepend3" pattern="[A-Za-z0-9]+" required>
+                    <div class="valid-feedback">
+                        Tudo certo!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, Preencha o campo.
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
+        <!-- ... Outros campos ... -->
+        <div class="row mb-4">
+            <div class="col-md-5 mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-7 mb-3">
+                <label for="cEmail">Confirmar E-mail</label>
+                <input type="email" class="form-control" id="cEmail" placeholder="E-mail" onblur="Email()" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="sNome">Sobrenome</label>
-        <input type="text" class="form-control" id="sNome" name="sNome" placeholder="Sobrenome" pattern="[A-Za-z]+"
-          required>
-        <div class="valid-feedback">
-          Tudo certo!
+        <!-- ... Restante dos campos ... -->
+        <div class="row mb-4">
+            <div class="col-md-5 mb-3">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-7 mb-3">
+                <label for="cSenha">Confirmar Senha</label>
+                <input type="password" class="form-control" id="cSenha" placeholder="Senha" onblur="Senha()" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
         </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
+        <div class="row mb-4">
+            <div class="col-md-5 mb-3">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" pattern="[A-Za-z]+"
+                    required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control" id="estado" name="estado" placeholder="Sigla" pattern="[A-Z]{2}"
+                    required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP (numeros)" pattern="[0-9]{8}"
+                    required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="usuario">Usuário</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="arroba">@</span>
-          </div>
-          <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário"
-            aria-describedby="inputGroupPrepend3" pattern="[A-Za-z]+" required>
-          <div class="valid-feedback">
-            Tudo certo!
-          </div>
-          <div class="invalid-feedback">
-            Por favor, Preencha o campo.
-          </div>
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF(numeros)" pattern="[0-9]{11}"
+                    required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="nCartao">Nº Cartão</label>
+                <input type="text" class="form-control" id="nCartao" name="nCartao" placeholder="Nº Cartão (numeros)"
+                    pattern="[0-9]{13,16}" required>
+                <div class="valid-feedback">
+                    Tudo certo!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, Preencha o campo.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-5 mb-3">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-        <div class="valid-feedback">
-          Tudo certo!
+        <div class="cliente">
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <label for="tipo">Tipo</label>
+                <select class="form-select" id="tipo" name="tipo">
+                    <option value="C">Cliente</option>
+                    <option value="F">Funcionário</option>
+                </select>
+            </div>
+            </div>
         </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input is-invalid" type="checkbox" value="" id="termos" onclick="marcarTermos()"
+                    required>
+                <label class="form-check-label" for="invalidCheck3">
+                    Concordo com os termos e condições
+                </label>
+            </div>
         </div>
-      </div>
-      <div class="col-md7 mb-3">
-        <label for="cEmail">Confirmar E-mail</label>
-        <input type="email" class="form-control" id="cEmail" placeholder="E-mail" onblur="Email()" required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-5 mb-3">
-        <label for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-      <div class="col-md7 mb-3">
-        <label for="cSenha">Confirmar Senha</label>
-        <input type="password" class="form-control" id="cSenha" placeholder="Senha" onblur="Senha()" required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-5 mb-3">
-        <label for="cidade">Cidade</label>
-        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" pattern="[A-Za-z]+"
-          required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <label for="estado">Estado</label>
-        <input type="text" class="form-control" id="estado" name="estado" placeholder="Sigla" pattern="[A-Z]{2}"
-          required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-      <div class="col-md-5 mb-3">
-        <label for="cep">CEP</label>
-        <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP (numeros)" pattern="[0-9]{8}"
-          required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF(numeros)" pattern="[0-9]{11}"
-          required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="nCartao">Nº Cartão</label>
-        <input type="text" class="form-control" id="nCartao" name="nCartao" placeholder="Nº Cartão (numeros)"
-          pattern="[0-9]{13,16}" required>
-        <div class="valid-feedback">
-          Tudo certo!
-        </div>
-        <div class="invalid-feedback">
-          Por favor, Preencha o campo.
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 mb-3">
-    
-      <select class="form-select" name="tipo" id="tipo">
-        <option value="C">Cliente</option>
-        <option value="F">Funcionario</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input is-invalid" type="checkbox" value="" id="termos" onclick="marcarTermos()"
-          required>
-        <label class="form-check-label" for="invalidCheck3">
-          Concordo com os termos e condições
-        </label>
-      </div>
-    </div>
-    <button id="btnCadastro" class="btn btn-primary" type="submit">Cadastre-se</button>
-  </form>
+        <br>
+        <button id="btnCadastro" class="btn btn-primary" type="submit">Cadastre-se</button>
+    </form>
 
   <!-- inicio do footer  -->
   <div class="footer">
@@ -269,8 +276,8 @@
 </body>
 
 <script src="cadastro.js"></script>
-<script src="cep.js"></script>
 <script src="mapaLoja.js"></script>
+
 
 <script>
     <?php if (!empty($_GET['msgErro'])) { ?>
@@ -282,7 +289,5 @@
         alert("<?php echo $_GET['msgSucesso']; ?>");
     <?php } ?>
 </script>
-
-
 
 </html>

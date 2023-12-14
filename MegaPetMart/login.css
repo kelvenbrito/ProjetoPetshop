@@ -2,18 +2,93 @@ body {
     background-color: rgba(20, 181, 55, 0.2);
 }
 
-.needs-validation1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: black;
+.needs-validation1 h1{
+    margin-left: 7rem;
 }
 
+.needs-validation1 {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Largura máxima do formulário */
+    margin: auto;
+}
+
+.form-row {
+    margin-bottom: 1.25rem; /* Espaçamento entre as linhas do formulário */
+}
+
+.form-control {
+    border-radius: 0; /* Borda reta para os campos de entrada */
+}
+
+.input-group-text {
+    border-radius: 0; /* Borda reta para o prefixo '@' */
+}
+
+.form-select {
+    border-radius: 0; /* Borda reta para o elemento de seleção */
+}
+
+.btn-primary {
+    border-radius: 0; /* Borda reta para o botão 'Entrar' */
+}
+
+.textologin {
+    display: block;
+    margin-left: 10%;
+    margin-top: 1rem; /* Espaçamento superior para o link de cadastro */
+    color: #007bff; /* Cor do link de cadastro */
+    text-decoration: none; /* Remover sublinhado padrão */
+}
+
+.textologin:hover {
+    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+}
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 100%;
+    background: #2A8A5C;
+}
+
+
 #btnLogin {
+    margin-left: 9rem;
+    border-color: black;
     background-color: #2A8A5C;
 }
 
 #btnLogin:hover {
     background-color: #15b065;
+}
+
+/* Responsividade geral */
+@media only screen and (max-width: 768px) {
+    .tipos {
+        margin-left: 0;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .informacoes,
+    .informacoes2,
+    .faleConosco,
+    .input,
+    .input2 {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .input,
+    .input2 {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    #btnLogin {
+        width: 100%;
+    }
 }

@@ -13,7 +13,7 @@
     display: flex;
     float: left;
     width: 33%;
-    height: 70vh;
+    height: 80vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -40,4 +40,34 @@
 
 .clicandoAqui{
     text-decoration: underline;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 768px) {
+    .total {
+        margin-top: 0; /* Removido o margin-top negativo */
+    }
+
+    .esquerda {
+        width: 100%; /* Ajustado para ocupar toda a largura */
+        height: auto; /* Ajustado para altura automática */
+        text-align: center; /* Centralizado o texto */
+    }
+
+    .esquerda h1 {
+        margin-top: 30px; /* Reduzido o margin-top */
+        font-size: 24px; /* Reduzido o tamanho da fonte */
+    }
+
+    .quemSomosTexto {
+        margin-left: 0; /* Ajustado para começar da esquerda */
+    }
+
+    .quemSomosTexto h1 {
+        font-size: 36px; /* Ajustado o tamanho da fonte */
+    }
+    
+    .clicandoAqui {
+        text-align: center; /* Centralizado o texto */
+    }
 }

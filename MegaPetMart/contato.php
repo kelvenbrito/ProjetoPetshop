@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="contato.css">
@@ -17,46 +16,62 @@
 <body>
 
     <header>
-        <div class="cima">
-            <a href="index.html"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
-            <div id="divBusca">
-                <div class="inputBox_container">
-                    <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
-                        <path
-                            d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z">
-                        </path>
-                    </svg>
-                    <input class="inputBox" id="inputBox" type="text" placeholder="Pesquise Produtos">
-                </div>
-            </div>
-            <div class="pedidos">
-                <a href="pedidos.html"><img src="images/dropbox.png" alt=""></a>
-                <a href="pedidos.html">Meus Pedidos</a>
-            </div>
-            <div class="carrinho">
-                <a href="carrinho.html">
-                    <button data-quantity="0" class="btn-cart">
-                        <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <title>icon-cart</title>
-                            <path transform="translate(-3.62 -0.85)"
-                                d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0">
-                            </path>
-                        </svg>
-                        <span class="quantity"></span>
-                    </button>
-                </a>
-            </div>
-            <div class="login">
-                <a href="login.html"><button class="entrar_cadastro">
-                        <span>Entrar</span>
-                    </button></a>
-                <a href="cadastro.html"><button class="entrar_cadastro">
-                        <span>Cadastrar</span>
-                    </button></a>
-            </div>
+    <div class="cima">
+      <a href="index.php"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
+      <div id="divBusca">
+        <div class="inputBox_container">
+          <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
+            <path
+              d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z">
+            </path>
+          </svg>
+          <input class="inputBox" id="inputBox" type="text" placeholder="Pesquise Produtos">
         </div>
-    </header>
+      </div>
+      <div class="pedidos">
+        <a href="pedidos.php"><img src="images/dropbox.png" alt=""></a>
+        <a href="pedidos.php">Meus Pedidos</a>
+      </div>
+      <div class="carrinho">
+        <a href="">
+          <button data-quantity="0" class="btn-cart">
+            <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>icon-cart</title>
+              <path transform="translate(-3.62 -0.85)"
+                d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0">
+              </path>
+            </svg>
+            <span class="quantity"></span>
+          </button>
+        </a>
+      </div>
+      <div class="login">
+        <?php
+
+        session_start();
+        // Verificar se $_SESSION['usuario'] está definida
+        if (isset($_SESSION['usuario'])) {
+          // Mostrar o nome do usuário
+          echo '<div class="usuarioLogado">';
+          echo 'Bem-vindo, ' . $_SESSION['usuario'];
+          echo '</div>';
+          echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
+        } else {
+          // Se não estiver logado, mostrar botões de login e cadastro
+          echo '<div class="login">';
+          echo '<a href="login.php"><button class="entrar_cadastro">';
+          echo '<span>Entrar</span>';
+          echo '</button></a>';
+          echo '<a href="cadastro.php"><button class="entrar_cadastro">';
+          echo '<span>Cadastrar</span>';
+          echo '</button></a>';
+          echo '</div>';
+        }
+        ?>
+      </div>
+    </div>
+  </header>
 
     <div class="total">
         <div class="informacoes">
@@ -95,7 +110,7 @@
         <div class="input2">
             <textarea name="" id="" cols="5" rows="5" placeholder="Digite sua mensagem aqui"></textarea>
 
-            <button id="btnLogin" class="btn btn-primary" type="submit"> Enviar </button>
+            <button id="btnLogin" class="btn btn-success" type="submit" onclick="Enviar()"> Enviar </button>
         </div>
     </div>
     <br><br>

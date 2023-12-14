@@ -1,5 +1,9 @@
 /* MeusPedidos */
 
+section {
+    background-color: #D0E2DA;
+}
+
 .tituloPedidos {
     margin-top: 0.2%;
     height: 50px;
@@ -10,52 +14,68 @@
     align-items: center;
 }
 
+.botoesPedidos {
+    background-color: #4a9671;
+    border-radius: 10px;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+
 .botoesPedidos button {
     margin-top: 1%;
     margin-left: 1%;
     margin-right: 1%;
     width: 10%;
-color: black;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
+
+.infoPedido {
+    overflow-x: auto;
+    white-space: nowrap;
+    background: #4a9671;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 10px;
+}
+
+
 
 /* Responsividade */
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 500px) {
 
     .botoesPedidos button {
-        /* Largura mínima desejada para os botões */
         min-width: 22%;
-        /* Evita que os botões quebrem a linha */
         white-space: nowrap;
-        /* Permite a rolagem horizontal se os botões não couberem na tela */
         overflow-x: auto;
-
-
     }
-
 }
 
-
-.infoPedido {
-    margin-top: 1%;
-    width: 100%;
-    height: 140px;
-    flex-shrink: 0;
-    border: 1px solid #000;
-    background: #D0E2DA;
-}
 
 /* Responsividade */
 
 @media screen and (max-width: 1600px) {
+
     .infoPedido {
-        /* Largura mínima desejada */
-        min-width: 900px;
-        /* ou o valor que você achar ideal */
         overflow-x: auto;
         white-space: nowrap;
-        /* Evita que o conteúdo quebre a linha */
+        background: #4a9671;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-top: 10px;
     }
+
+    .tituloPedidos {
+        white-space: nowrap;
+        background-color: #D9D9D9;
+    }
+
 }
 
 .infoPedido h3 {
@@ -68,20 +88,37 @@ color: black;
 
 }
 
-@media screen and (min-width: 1500px) {
+.itensPedido {
+    background-color: #D9D9D9;
+}
+
+@media screen and (min-width: 1000px) {
 
     .itensPedido {
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background: #D0E2DA;
+    }
+
+
+
+}
+
+@media screen and (min-width: 500px) and (max-width: 1480px) {
+
+    .itensPedido {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background: #D0E2DA;
     }
 
 }
 
-@media screen and (max-width: 1600px) {}
-
 .itensPedido .col-6 {
     margin-top: 0.5%;
-    background: #D0E2DA;
+    background-color: #D9D9D9;
 }
 
 .item {
@@ -90,49 +127,41 @@ color: black;
 }
 
 .fundoItens {
-    background-color: #D0E2DA;
-    margin-top: 1%;
-    margin-left: 3%;
-    margin-right: 3%;
+    background: transparent;
+    margin-left: 1.3%;
+    margin-right: 0%;
     display: flex;
-    /* Distribui os elementos igualmente */
     justify-content: space-between;
-    /* Alinha verticalmente no centro (opcional) */
-    align-items: center;
+    align-items: flex-start;
 
 }
 
 /* Responsividade */
 
-
-/* Media query para parar de diminuir em telas maiores */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 400px) {
     .fundoItens {
-        width: 800px;
-        /* Largura mínima para a div pai */
+        width: 30%;
+
     }
 
-    /* Largura mínima para as divs filhas */
-    .fundoItens .descricao,
+    .fundoItens .descricao {
+        max-width: 100px;
+    }
+
     .fundoItens .imgItem,
     .fundoItens .comprNov {
         width: 100%;
-        /* Ou outro valor desejado */
         max-width: 260px;
-        /* Define o tamanho máximo para evitar diminuir mais */
+        height: auto;
+
     }
 }
 
 
 .imgItem {
-    /* largura desejada */
     width: 200px;
-    /* altura desejada */
     height: 300px;
-    /*  ocultar partes da imagem que excedem os limites */
     overflow: hidden;
-
-    /* centralizar a imagem verticalmente e horizontalmente */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,11 +169,8 @@ color: black;
 }
 
 .imgItem img {
-    /* Ajusta a largura da imagem para preencher a div */
     width: 100%;
-    /* Ajusta a altura da imagem para preencher a div */
-    height: 90%;
-    /* Mantém a proporção da imagem e a insere dentro do conteiner */
+    height: auto;
     object-fit: contain;
 }
 
@@ -157,7 +183,7 @@ color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 
 
 
@@ -165,32 +191,140 @@ color: black;
 
 .descricao h5 {
     font-weight: bold;
-    /* Fica no topo */
     align-self: flex-start;
-    /* Para evitar que ultrapasse o limite inferior */
     margin-bottom: auto;
     text-align: left;
+    text-align: center;
 }
 
 .descricao h6 {
     font-weight: bold;
-    /* Para evitar que ultrapasse o limite superior */
-    margin-top: auto;
-    text-align: left;
+    text-align: center;
+
 }
 
-.comprNov {
-    /* largura desejada */
-    width: 300px;
-    /* altura desejada */
-    height: 300px;
-    overflow: hidden;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
 
 .comprNov button {
     background-color: #2A8A5C;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .infoPedido .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .infoPedido .col-3 {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .fundoItens {
+        background: transparent;
+        margin-left: 13%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+
+}
+
+@media screen and (min-width: 700px)  and (max-width: 850px) {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 22%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1100px)  and (max-width: 1270px) {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 11%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 960px)  and (max-width: 1100px) {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 7.5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1850px)  {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 3.1%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1800px) and (max-width: 1850px)  {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 2.5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1750px)  {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1450px) and (max-width: 1600PX)  {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1440PX)  {
+
+    .fundoItens {
+        background: transparent;
+        margin-left: 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
 }

@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="quemsomos.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <title>Quem Somos</title>
 </head>
 
@@ -18,7 +17,7 @@
 
   <header>
     <div class="cima">
-      <a href="index.html"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
+      <a href="index.php"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
       <div id="divBusca">
         <div class="inputBox_container">
           <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
@@ -30,11 +29,11 @@
         </div>
       </div>
       <div class="pedidos">
-        <a href="pedidos.html"><img src="images/dropbox.png" alt=""></a>
-        <a href="pedidos.html">Meus Pedidos</a>
+        <a href="pedidos.php"><img src="images/dropbox.png" alt=""></a>
+        <a href="pedidos.php">Meus Pedidos</a>
       </div>
       <div class="carrinho">
-        <a href="carrinho.html">
+        <a href="">
           <button data-quantity="0" class="btn-cart">
             <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
               xmlns="http://www.w3.org/2000/svg">
@@ -48,12 +47,28 @@
         </a>
       </div>
       <div class="login">
-        <a href="login.html"><button class="entrar_cadastro">
-            <span>Entrar</span>
-          </button></a>
-        <a href="cadastro.html"><button class="entrar_cadastro">
-            <span>Cadastrar</span>
-          </button></a>
+        <?php
+
+        session_start();
+        // Verificar se $_SESSION['usuario'] está definida
+        if (isset($_SESSION['usuario'])) {
+          // Mostrar o nome do usuário
+          echo '<div class="usuarioLogado">';
+          echo 'Bem-vindo, ' . $_SESSION['usuario'];
+          echo '</div>';
+          echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
+        } else {
+          // Se não estiver logado, mostrar botões de login e cadastro
+          echo '<div class="login">';
+          echo '<a href="login.php"><button class="entrar_cadastro">';
+          echo '<span>Entrar</span>';
+          echo '</button></a>';
+          echo '<a href="cadastro.php"><button class="entrar_cadastro">';
+          echo '<span>Cadastrar</span>';
+          echo '</button></a>';
+          echo '</div>';
+        }
+        ?>
       </div>
     </div>
   </header>
@@ -65,11 +80,11 @@
     <div class="esquerda">
       <h1>Sobre a MegaPet Mart</h1>
       <br>
-      <li><a href="quemsomos.html">Quem Somos</a></li>
+      <li><a href="quemsomos.php">Quem Somos</a></li>
       <br>
       <li><a href="">Dúvidas Gerais</a></li>
       <br><br>
-      <a href="index.html">Ínicio</a>
+      <a href="index.php">Ínicio</a>
     </div>
     <div class="quemSomosTexto">
       <h1>Empresa</h1>
@@ -86,7 +101,7 @@
       <p>Av. das Nações Unidas 12901 - 11º andar, Brooklin Paulista, São Paulo - SP
         CEP 04578-910
         CNPJ 10.864.846/0001-23
-        Entre em contato conosco <a class="clicandoAqui" href="contato.html">clicando aqui.</a></p>
+        Entre em contato conosco <a class="clicandoAqui" href="contato.php">clicando aqui.</a></p>
     </div>
   </div>
 
@@ -133,4 +148,5 @@
 
 </body>
 <script src="mapaLoja.js"></script>
+
 </html>

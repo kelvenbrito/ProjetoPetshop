@@ -24,14 +24,17 @@ die();
 <body>
 
     <h2>Cadastrado de Produtos</h2>
-
+<br>
+    <a href="logout.php" class="btn btn-dark" id="logout">Sair</a>
     <div class="container">
-
+        <br>
+        <!--  Se houver um parâmetro 'msgErro' na URL, exibe um alerta com seu valor -->
         <?php if (!empty($_GET['msgErro'])) { ?>
             <div class="alert alert-warning" role="alert">
                 <?php echo $_GET['msgErro']; ?>
             </div>
         <?php } ?>
+        <!--  Se houver um parâmetro 'msgSucesso' na URL, exibe um alerta com seu valor -->
         <?php if (!empty($_GET['msgSucesso'])) { ?>
 
             <div class="alert alert-success" role="alert">
@@ -39,7 +42,7 @@ die();
             </div>
         <?php } ?>
     </div>
-
+<br>
     <form action="cadprodutosDAO.php" method="post" enctype="multipart/form-data">
         <label>Imagem:</label><input type="file" name="imagem" />
         <label>Código do Produto</label><input type="text" name="id"><br>
@@ -80,7 +83,6 @@ die();
         $result = mysqli_query($conn, $query) or die("Impossível executar a query");
     }
     ?>
-
 
     <form action="" method="post" enctype="multipart/form-data">
 

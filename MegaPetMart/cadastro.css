@@ -15,8 +15,17 @@ body {
     margin: 2%;
 }
 
+.form-select {
+    width:  11rem; /* Ajuste conforme necessário */
+}
+
+.form-group{
+    margin-top: -2rem;
+}
+
 #btnCadastro {
     background-color: #2A8A5C;
+    border-color: black;
 }
 
 #btnCadastro:hover {

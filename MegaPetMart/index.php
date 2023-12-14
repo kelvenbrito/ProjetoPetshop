@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <title>Início</title>
 </head>
@@ -17,7 +17,7 @@
 
   <header>
     <div class="cima">
-      <a href="index.html"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
+      <a href="index.php"><img class="foto1" src="images/MegaPet Mart.png" alt=""> </a>
       <div id="divBusca">
         <div class="inputBox_container">
           <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
@@ -29,11 +29,11 @@
         </div>
       </div>
       <div class="pedidos">
-        <a href="pedidos.html"><img src="images/dropbox.png" alt=""></a>
-        <a href="pedidos.html">Meus Pedidos</a>
+        <a href="pedidos.php"><img src="images/dropbox.png" alt=""></a>
+        <a href="pedidos.php">Meus Pedidos</a>
       </div>
-      <div class="carrinho">    
-        <a href="carrinho.html">
+      <div class="carrinho">
+        <a href="">
           <button data-quantity="0" class="btn-cart">
             <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
               xmlns="http://www.w3.org/2000/svg">
@@ -47,19 +47,35 @@
         </a>
       </div>
       <div class="login">
-        <a href="login.php"><button class="entrar_cadastro">
-            <span>Entrar</span>
-          </button></a>
-        <a href="cadastro.php"><button class="entrar_cadastro">
-            <span>Cadastrar</span>
-          </button></a>
+        <?php
+
+        session_start();
+        // Verificar se $_SESSION['usuario'] está definida
+        if (isset($_SESSION['usuario'])) {
+          // Mostrar o nome do usuário
+          echo '<div class="usuarioLogado">';
+          echo 'Bem-vindo, ' . $_SESSION['usuario'];
+          echo '</div>';
+          echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
+        } else {
+          // Se não estiver logado, mostrar botões de login e cadastro
+          echo '<div class="login">';
+          echo '<a href="login.php"><button class="entrar_cadastro">';
+          echo '<span>Entrar</span>';
+          echo '</button></a>';
+          echo '<a href="cadastro.php"><button class="entrar_cadastro">';
+          echo '<span>Cadastrar</span>';
+          echo '</button></a>';
+          echo '</div>';
+        }
+        ?>
       </div>
     </div>
   </header>
   <div class="navBar">
-    <a href="quemsomos.html">Quem Somos</a>
+    <a href="quemsomos.php">Quem Somos</a>
     <a href="produtos.php">Produtos</a>
-    <a href="contato.html">Contato</a>
+    <a href="contato.php">Contato</a>
   </div>
   <br>
   <div class="carousel">
@@ -102,7 +118,7 @@
         <h5 class="card-title">Ração Premium para Bovinos e Equinos</h5>
         <p class="card-text">Nutrição superior para o seu gado. Fórmula balanceada, proteínas de qualidade e desempenho
           excepcional. Garanta o melhor para seus animais.</p>
-        <a href="produtos.html" class="btn btn-success">Saiba Mais</a>
+        <a href="produtos.php" class="btn btn-success">Saiba Mais</a>
       </div>
     </div>
     <div class="card text-white bg-light mb-3" style="width: 17rem;">
@@ -112,7 +128,7 @@
         <p class="card-text">Aprimore o cuidado com seus animais! Descubra nossa linha premium de acessórios para
           bovinos e equinos. Qualidade incomparável, design funcional e durabilidade. Proporcione o conforto que seus
           animais merecem. Compre agora e eleve o padrão do seu manejo.</p>
-        <a href="produtos.html" class="btn btn-success">Saiba Mais</a>
+        <a href="produtos.php" class="btn btn-success">Saiba Mais</a>
       </div>
     </div>
     <div class="card text-white bg-light mb-3" style="width: 17rem;">
@@ -122,7 +138,7 @@
         <p class="card-text"> Cuide da saúde dos seus animais com nossa seleção premium de medicamentos para bovinos e
           equinos. Fórmulas confiáveis, eficácia comprovada e resultados rápidos. Priorize o bem-estar dos seus animais.
           Adquira agora para uma vida mais saudável e ativa.</p>
-        <a href="produtos.html" class="btn btn-success">Saiba Mais </a>
+        <a href="produtos.php" class="btn btn-success">Saiba Mais </a>
       </div>
     </div>
     <div class="card text-white bg-light mb-3" style="width: 17rem;">
@@ -130,8 +146,8 @@
       <div class="card-body">
         <h5 class="card-title">Limpeza Impecável: Produtos de Higiene para Bovinos e Equinos</h5>
         <p class="card-text">Mantenha seus animais impecáveis com nossa linha premium de produtos de limpeza para
-          bovinos e equinos. Fórmulas eficientes, design prático e resultados notáveis. 
-          <a href="produtos.html" class="btn btn-success">Saiba Mais</a>
+          bovinos e equinos. Fórmulas eficientes, design prático e resultados notáveis.
+          <a href="produtos.php" class="btn btn-success">Saiba Mais</a>
       </div>
     </div>
   </div>
@@ -176,16 +192,14 @@
     </div>
   </footer>
 </body>
-    </div>
-  </footer>
-</body>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="mapaLoja.js"></script>
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="mapaLoja.js"></script>
 </body>
 
 </html>

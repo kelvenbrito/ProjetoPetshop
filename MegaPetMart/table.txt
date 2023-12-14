@@ -1,8 +1,7 @@
 CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     pNome VARCHAR(255) NOT NULL,
     sNome VARCHAR(255) NOT NULL,
-    usuario VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     cidade VARCHAR(255),
@@ -22,4 +21,14 @@ CREATE TABLE produto(
     descricao varchar(100),
     valor int(10),
     prod_img longblob,
+     qtd int(10));
+
+      create table pedidos(
+     id int(10) not null,
+     data varchar(50),
+     valor decimal(50,2),
+     endereco varchar(150),
+     numPedido int(10),
+     descricao varchar(250),
+     img varchar(200),
      qtd int(10));

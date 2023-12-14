@@ -6,6 +6,7 @@ html, body {
 .footer {
     display: flex;
     justify-content: space-evenly;
+    position: relative;
     width: 100%;
     top: 100%;
     background: #2A8A5C;
@@ -90,4 +91,47 @@ margin-bottom: 20px;
 a {
     text-decoration: none;
     color: black;
+}
+
+/* Responsividade geral */
+@media only screen and (max-width: 768px) {
+    .logoFooter {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .ladoEsqFooter,
+    .redeSocial,
+    .politica1,
+    .politica2,
+    .politica3 {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .imgRede {
+        margin-top: 10px;
+        padding-left: 0;
+    }
+
+    .meioFooter {
+        width: 100%;
+    }
+
+    #mapa {
+        width: 100%;
+        height: 200px;
+    }
+
+    .politica1 h1,
+    .politica2 h1 {
+        font-size: 20px;
+    }
+
+    .politica3 h4 {
+        margin-top: 10px;
+        font-size: 18px;
+    }
 }

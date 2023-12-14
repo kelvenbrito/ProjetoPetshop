@@ -8,13 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="cadProduto.css">
-    <title>Alterar Produto</title>
+    <title>Deletar Produto</title>
 </head>
 
 <body>
 
-    <h2>Alterar Produto</h2>
-
+    <h2>Deletar Produto</h2>
     <?php
     // Inclui o arquivo de conexão com o banco de dados
     require_once 'db.php';
@@ -46,9 +45,8 @@
         <label>Imagem:</label><input type="file" name="imagem" />
         <label>Quantidade</label><input type="number" name="qtd" value="<?php echo $row->qtd; ?>"><br>
 
-
-        <button type="submit" name="enviarDados" class="btn btn-primary" value="del">Excluir</button>
-        <a href="cadastroproduto"><button class="btn btn-danger" value="del">Cancelar</button></a>
-        
-
+        <div class="botao">
+        <button type="submit" name="enviarDados" class="btn btn-success" value="del">Excluir</button>
+        <a href="cadastroproduto"><button class="btn btn-danger">Cancelar</button></a>
+        </div>
     </form>

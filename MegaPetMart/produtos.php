@@ -51,29 +51,29 @@
                 </a>
             </div>
             <div class="login">
-        <?php
+                <?php
 
-        session_start();
-        // Verificar se $_SESSION['usuario'] está definida
-        if (isset($_SESSION['usuario'])) {
-          // Mostrar o nome do usuário
-          echo '<div class="usuarioLogado">';
-          echo 'Bem-vindo, ' . $_SESSION['usuario'];
-          echo '</div>';
-          echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
-        } else {
-          // Se não estiver logado, mostrar botões de login e cadastro
-          echo '<div class="login">';
-          echo '<a href="login.php"><button class="entrar_cadastro">';
-          echo '<span>Entrar</span>';
-          echo '</button></a>';
-          echo '<a href="cadastro.php"><button class="entrar_cadastro">';
-          echo '<span>Cadastrar</span>';
-          echo '</button></a>';
-          echo '</div>';
-        }
-        ?>
-      </div>
+                session_start();
+                // Verificar se $_SESSION['usuario'] está definida
+                if (isset($_SESSION['usuario'])) {
+                    // Mostrar o nome do usuário
+                    echo '<div class="usuarioLogado">';
+                    echo 'Bem-vindo, ' . $_SESSION['usuario'];
+                    echo '</div>';
+                    echo '<a href="logout.php" class="btn btn-dark" id="logout">Sair</a>';
+                } else {
+                    // Se não estiver logado, mostrar botões de login e cadastro
+                    echo '<div class="login">';
+                    echo '<a href="login.php"><button class="entrar_cadastro">';
+                    echo '<span>Entrar</span>';
+                    echo '</button></a>';
+                    echo '<a href="cadastro.php"><button class="entrar_cadastro">';
+                    echo '<span>Cadastrar</span>';
+                    echo '</button></a>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
         </div>
     </header>
     <div class="navBar">
@@ -128,11 +128,6 @@
                         <div class="label-text" name="textoFiltro">Medicamentos</div>
                     </label>
                     <label class="label">
-                        <input value="Vitaminas" name="value-radio" id="produto-4" class="radio-input" type="radio">
-                        <div class="radio-design"></div>
-                        <div class="label-text" name="textoFiltro">Vitaminas</div>
-                    </label>
-                    <label class="label">
                         <input value="Acessórios" name="value-radio" id="produto-5" class="radio-input" type="radio">
                         <div class="radio-design"></div>
                         <div class="label-text" name="textoFiltro">Acessórios</div>
@@ -179,14 +174,14 @@
 
                 <div class="mudarPreco">
                     <p id="precoProd">R$0</p>
-                <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
+                    <button type="submit" class="btn btn-success" id="aplicar">Aplicar</button>
                 </div>
             </div>
         </form>
 
         <div class="cardProdutos">
             <div class="row row-cols-1 row-cols-md-3">
-            <?php
+                <?php
                 // Requisita o arquivo que contém as operações do banco de dados para os produtos
                 require_once 'produtosDAO.php';
 
@@ -228,40 +223,41 @@
                 <?php } ?>
             </div>
         </div>
-        </section>
-        <form action="" method="post" enctype="multipart/form-data">
-            <section class="prodPg">
-                <div class="mydict">
+    </section>
+    <section class="prodPg">
+    <form action="" method="post" enctype="multipart/form-data">
+       
+            <div class="mydict">
 
-                    <?php
-                    $query = "SELECT COUNT(*) as total FROM produto";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_assoc($result);
-                    $total_registros = $row['total'] / 12;
-                    if ($row['total'] % 12 != 0) {
-                        $total_registros++;
-                    }
-                    $j = 0;
+                <?php
+                $query = "SELECT COUNT(*) as total FROM produto";
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_assoc($result);
+                $total_registros = $row['total'] / 12;
+                if ($row['total'] % 12 != 0) {
+                    $total_registros++;
+                }
+                $j = 0;
 
-                    for ($i = 1; $i <= $total_registros; $i++) {
-                        ?>
-                        <button type="submit" class="btn btn-link" id="aplicar" name="radiopg"
-                            value="<?php echo ($j * 12) ?>">
-                            <label>
-                                <span>
+                for ($i = 1; $i <= $total_registros; $i++) {
+                    ?>
+                    <button type="submit" class="btn btn-link" id="aplicar" name="radiopg" value="<?php echo ($j * 12) ?>">
+                        <label>
+                            <span>
 
-                                    <?php echo "$i" ?>
-                                </span>
-                            </label>
-                        </button>
+                                <?php echo "$i" ?>
+                            </span>
+                        </label>
+                    </button>
 
-                        <?php $j = $i ?>
+                    <?php $j = $i ?>
 
-                    <?php } ?>
-                  
-                </div>
-            </section>
-        </form>
+                <?php } ?>
+
+            </div>
+      
+    </form>
+    </section>
     <footer>
         <div class="footer">
             <div class="ladoEsqFooter">
@@ -292,14 +288,14 @@
                 <a href="">Política de white hat</a>
             </div>
             <div class="politica3">
-        <h4>Encontre uma loja</h4>
-        <div class="mapa">
-          <!-- Elemento onde o mapa será exibido -->
-          <div id="mapa"></div>
-          <!-- Inclusão da biblioteca Leaflet -->
-          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        </div>
-      </div>
+                <h4>Encontre uma loja</h4>
+                <div class="mapa">
+                    <!-- Elemento onde o mapa será exibido -->
+                    <div id="mapa"></div>
+                    <!-- Inclusão da biblioteca Leaflet -->
+                    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+                </div>
+            </div>
         </div>
     </footer>
 </body>

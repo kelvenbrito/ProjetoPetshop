@@ -83,22 +83,25 @@ die();
         $result = mysqli_query($conn, $query) or die("Impossível executar a query");
     }
     ?>
+ 
 
     <form action="" method="post" enctype="multipart/form-data">
 
         <!-- Seção dos botões de filtro -->
-
-        <label>Código do Produto</label> <input type="radio" name="filtro" value="id">
-        <label>Nome</label> <input type="radio" name="filtro" value="nome">
-        <label>Tipo </label> <input type="radio" name="filtro" value="tipo">
-        <label>Categoria</label> <input type="radio" name="filtro" value="categoria">
-        <label>Descrição</label> <input type="radio" name="filtro" value="descricao">
-        <label>Marca</label> <input type="radio" name="filtro" value="marca">
-        <label>Valor</label> <input type="radio" name="filtro" value="valor">
-        <label>Quantidade</label> <input type="radio" name="filtro" value="qtd">
+        <div class="filtroPesquisa">
+        <label><input type="radio" name="filtro" value="id"> Código do Produto </label>
+        <label><input type="radio" name="filtro" value="nome"> Nome </label>
+        <label> <input type="radio" name="filtro" value="tipo"> Tipo </label>
+        <label> <input type="radio" name="filtro" value="categoria"> Categoria</label>
+        <label><input type="radio" name="filtro" value="descricao"> Descrição</label>
+        <label> <input type="radio" name="filtro" value="marca"> Marca</label>
+        <label><input type="radio" name="filtro" value="valor"> Valor</label>
+        <label><input type="radio" name="filtro" value="qtd"> Quantidade </label>
+        </div>
         <input type="text" name="pesquisaProd" placeholder="Pesquisa">
         <button type="submit">Pesquisar</button>
     </form>
+    
     <section class="lista-vagas">
         <table class="table" id="tabelaProdutos" class="table">
             <thead>

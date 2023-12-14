@@ -172,6 +172,7 @@
 .prod {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 46rem;
 
 }
 
@@ -270,6 +271,10 @@ label:last-child span {
     background-color: #2A8A5C;
 }
 
+form{
+    height: 20vh;
+}
+
 /* Responsividade para o banner e filtro */
 @media only screen and (max-width: 768px) {
     .banner {
@@ -284,24 +289,27 @@ label:last-child span {
 
     .filtro {
         margin-bottom: 2vh;
+        height: 90rem;
     }
 
     .filtro input,
     .filtro h1,
     .filtro h2,
     .filtro p {
-        margin: 2vh 0;
+        margin: 3.5vh 0;
     }
 
     .preco,
     .filtro .mudarPreco,
     .filtro .slider {
         flex-direction: column;
+        
     }
 
     .filtro .slider {
         width: 100%;
         margin-top: 2vh;
+        height: 5vh;
     }
 
     .filtro button {
@@ -343,6 +351,16 @@ label:last-child span {
 
     .mydict button {
         margin: 0 1vh;
+    }
+
+    .prodPg{
+            margin-left: 20rem;
+            margin-top: -23rem;
+    }
+
+    .myRange{
+        font-size: 1vh;
+        height: 2vh;
     }
 }
 
